@@ -1,15 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>Simple Weather App</h1>
+    <LocationPicker />
+    <DisplayWeather />
+  </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import LocationPicker from './components/LocationPicker.vue'
+import DisplayWeather from './components/DisplayWeather.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    LocationPicker,
+    DisplayWeather
   }
 }
 </script>
