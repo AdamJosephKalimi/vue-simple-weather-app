@@ -22,15 +22,31 @@ export default {
     return {
       weather: {
         temp: null,
-        shortForecast: null
+        detailedForecast: null,
+        icon: null,
+        iconPath: null
       }
     }
   },
   methods: {
     updateWeather(data) {
       console.log("app.vue weather data", data)
+      this.weather.icon = data.properties.periods[0].icon
       this.weather.temp = data.properties.periods[0].temperature
-      this.weather.shortForecast = data.properties.periods[0].shortForecast
+      let shortForecast = data.properties.periods[0].shortForecast;
+      this.weather.detailedForecast = data.properties.periods[0].detailedForecast
+
+      // Issue with getting assets to render using databinding. Will only render if hardcoded.
+      // let key = shortForecast.split('')
+      //   for(let i = 0; i <= key.length; i++) {
+      //       if(key[i] === ' '){
+      //           key[i] = '_'
+      //       }
+      //   }
+      // key = key.join('').toLowerCase()
+      // var iconPath ="../assets/" + key + ".svg"
+      // this.weather.iconPath = iconPath
+      // console.log("App.vue iconpath", iconPath)
     },
   }
 }

@@ -3,35 +3,25 @@
         <h3>WEATHER</h3>
         <div v-if="weather.temp" class="forecast-container">
             <p class="temp">{{ weather.temp }}°</p>
-            <div v-if="iconPath" >
-                <img class='weather-img' :src='iconPath' alt="">
+            <div>
+                <!-- <img class='weather-img' :src="weather.iconPath" alt=""> -->
+                <img class='weather-img' :src="weather.icon" alt="">
             </div>
         </div>
-        <p>{{ weather.shortForecast}}</p>
+        <div class="weather-details">
+            <p>{{ weather.detailedForecast}}</p>
+        </div>
+        
     </div>
 </template>
 
 <script>
 export default {
     props: [ 'weather' ],
-    data() {
-        return {
-            iconPath: '../assets/mostly_sunny.svg'
-        }
-    }, 
-    updated() {
-        let key = this.weather.shortForecast.split('')
-        for(let i = 0; i <= key.length; i++) {
-            if(key[i] === ' '){
-                key[i] = '_'
-            }
-        }
-        key = key.join('').toLowerCase()
-        var iconPath ="../assets/" + key + ".svg"
-        this.iconPath = iconPath
-        console.log(iconPath)
-    }
-    
+    // data() {
+    //     return {
+    //     }
+    // }
 }
 </script>
 
@@ -46,6 +36,7 @@ export default {
     .weather-img { 
         width: 70px;
         height: 70px;
+        border-radius: 4px;
     }
     .temp {
         font-size: 60px; 
